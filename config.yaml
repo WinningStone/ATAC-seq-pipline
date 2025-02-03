@@ -1,0 +1,14 @@
+samples:
+
+  hESC_H9:
+    - ESC_H9-1
+    - ESC_H9-2
+    - ESC_H9-3
+
+genome: "hg38.fa"
+chrom_sizes: "hg38.chrom.sizes"
+blacklist: "hg38-blacklist.v2.bed"
+
+peak_callers: ["MACS2", "Genrich", "HMMRATAC", "SEACR"]
+
+output_dir: "results"

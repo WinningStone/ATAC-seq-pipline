@@ -1,0 +1,22 @@
+# Ignore intermediate Snakemake files
+.DS_Store
+*.log
+*.out
+*.err
+*.bai
+*.bam
+*.fastq.gz
+*.narrowPeak
+*.bigWig
+*.bdg
+*.bed
+results/
+benchmarking/
+genome_index/
+*.fa
+*.bwt
+*.sa
+*.pac
+*.ann
+*.fai
+*.amb
