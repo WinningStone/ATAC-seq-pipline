@@ -96,7 +96,7 @@ snakemake --dag | dot -Tpng > workflow.png
 
 Independent replicates should be processed separately.
 
-### **Initial QC Report**
+#### **Initial QC Report**
 
 The raw sequence data should first be assessed for quality. [FastQC reports](https://dnacore.missouri.edu/PDF/FastQC_Manual.pdf) can be generated for all samples to assess sequence quality, GC content, duplication rates, length distribution, K-mer content, and adapter contamination. In ATAC-seq data, it is likely that Nextera sequencing adapters will be over-represented. As described by [Yan et al. (2020)](https://genomebiology.biomedcentral.com/track/pdf/10.1186/s13059-020-1929-3), base quality should be high although it may drop slightly at the 3' end, while GC content and read length should be consistent with expected values. For paired-end reads, run FastQC on both files, with the results output to the current directory:
 
