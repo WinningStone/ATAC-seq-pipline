@@ -105,7 +105,7 @@ fastqc <sample>_R1.fastq.gz -d . -o .
 fastqc <sample>_R2.fastq.gz -d . -o .
 ```
 
-### **Adapter Trimming**
+#### **Adapter Trimming**
 
 Adapters and low-quality reads/bases should be trimmed using one of several programs, such as [trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic), [cutadapt](https://cutadapt.readthedocs.io/en/stable/), or [fastp](https://github.com/OpenGene/fastp). Adapter contamination can be seen in the FastQC report.
 
