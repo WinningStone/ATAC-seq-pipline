@@ -164,7 +164,9 @@ bash SEACR.sh sample.filtered.bam peaks/
 ---
 
 ## **4. Benchmarking and Comparison of Peak Callers**
-To evaluate and benchmark peak calling methods, the pipeline performs the following analyses:
+- Evaluating **peak overlaps** between different peak calling tools.
+- Calculating **Jaccard similarity scores** to assess the similarity of peak sets.
+- Counting the **total number of peaks called by each tool**.
 
 ### **Peak Overlap Analysis**
 Identifying peaks that are called by multiple tools:
