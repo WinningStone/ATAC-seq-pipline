@@ -26,10 +26,11 @@ The pipeline consists of the following major steps:
 2. **Read Alignment**
    - Aligning reads to the reference genome using **BWA**.
    - Sorting and indexing BAM files using **samtools**.
-   - Removing low-quality reads and duplicate reads using **Picard MarkDuplicates**.
-   - Removing mitochondrial and blacklisted reads using **bedtools**.
+
 
 3. **Post-processing**
+   - Removing low-quality reads and duplicate reads using **Picard MarkDuplicates**.
+   - Removing mitochondrial and blacklisted reads using **bedtools**.
 
    
 4. **Peak Calling and Benchmarking**
