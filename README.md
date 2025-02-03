@@ -19,8 +19,8 @@ The pipeline allows for the **benchmarking of peak calling tools** by systematic
 The pipeline consists of the following major steps:
 
 1. **Pre-processing and Quality Control**
-   - Adapter trimming and quality filtering using **fastp**.
    - Initial sequence quality assessment using **FastQC**.
+   - Adapter trimming and quality filtering using **fastp**.
    - Reference genome indexing using **BWA**.
 
 2. **Read Alignment and Post-processing**
@@ -87,6 +87,43 @@ snakemake --dag | dot -Tpng > workflow.png
 ---
 
 ## **Detailed Explanation of Each Step**
+
+## **Pre-alignment QC**
+
+Independent replicates should be processed separately.
+
+### **Initial QC Report**
+
+The raw sequence data should first be assessed for quality. [FastQC reports](https://dnacore.missouri.edu/PDF/FastQC_Manual.pdf) can be generated for all samples to assess sequence quality, GC content, duplication rates, length distribution, K-mer content, and adapter contamination. In ATAC-seq data, it is likely that Nextera sequencing adapters will be over-represented. As described by [Yan et al. (2020)](https://genomebiology.biomedcentral.com/track/pdf/10.1186/s13059-020-1929-3), base quality should be high although it may drop slightly at the 3' end, while GC content and read length should be consistent with expected values. For paired-end reads, run FastQC on both files, with the results output to the current directory:
+
+```bash
+fastqc <sample>_R1.fastq.gz -d . -o .
+fastqc <sample>_R2.fastq.gz -d . -o .
+```
+
+### **Adapter Trimming**
+
+Adapters and low-quality reads/bases should be trimmed using one of several programs, such as [trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic), [cutadapt](https://cutadapt.readthedocs.io/en/stable/), or [fastp](https://github.com/OpenGene/fastp). Adapter contamination can be seen in the FastQC report.
+
+For this pipeline, fastp is used to remove adapter sequences.
+
+```bash
+fastp -i <sample>_R1.fastq.gz -I <sample>_R2.fastq.gz -o <sample>_R1.trimmed.fastq.gz -O <sample>_R2.trimmed.fastq.gz --detect_adapter_for_pe -j <sample>.fastp.json -h <sample>.fastp.html
+```
+
+---
+
+### **Reference Genome Indexing**
+Before aligning reads, the reference genome must be indexed:
+```bash
+bwa index reference.fa
+```
+
+### **Read Alignment**
+Paired-end reads are aligned to the reference genome using the `bwa mem` algorithm:
+```bash
+bwa mem -t 8 reference.fa <sample>_R1.trimmed.fastq.gz <sample>_R2.trimmed.fastq.gz | samtools sort -o <sample>.sorted.bam
+```
 
 ### **Pre-processing and Quality Control**
 - Adapter trimming using `fastp` to remove sequencing adapters and low-quality bases.
