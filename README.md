@@ -136,8 +136,10 @@ picard MarkDuplicates I=sample.sorted.bam O=sample.dedup.bam M=metrics.txt REMOV
 ```
 
 ### **3. Peak Calling and Benchmarking**
-The pipeline runs multiple peak calling tools and compares their performance.
-
+- Running multiple peak calling tools: **MACS2, HMMRATAC, Genrich, and SEACR**.
+- Computing **Fraction of Reads in Peaks (FRiP) Score**.
+- Computing **Jaccard similarity between peak sets**.
+- **Comparing the performance of peak callers through overlap analysis**.
 
 #### MACS2 (Standard ATAC-seq Peak Caller)
 ```bash
