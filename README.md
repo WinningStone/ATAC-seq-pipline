@@ -89,7 +89,7 @@ snakemake --dag | dot -Tpng > workflow.png
 ## **Detailed Explanation of Each Step**
 
 
-### **Pre-alignment QC**
+### **1. Pre-alignment QC**
 - Adapter trimming using `fastp` to remove sequencing adapters and low-quality bases.
 - Quality control assessment using `FastQC` to inspect sequence quality.
 - Indexing the reference genome using `BWA index`.
@@ -124,13 +124,7 @@ Before aligning reads, the reference genome must be indexed:
 bwa index reference.fa
 ```
 
-### **Read Alignment**
-Paired-end reads are aligned to the reference genome using the `bwa mem` algorithm:
-```bash
-bwa mem -t 8 reference.fa <sample>_R1.trimmed.fastq.gz <sample>_R2.trimmed.fastq.gz | samtools sort -o <sample>.sorted.bam
-```
-
-### **Read Alignment and Post-processing**
+### **2. Read Alignment and Post-processing**
 - Aligning reads using `BWA`.
 - Sorting and indexing BAM files using `samtools`.
 - Marking and removing duplicate reads using `Picard MarkDuplicates`.
@@ -141,8 +135,12 @@ bwa mem -t 8 reference.fa trimmed_R1.fastq.gz trimmed_R2.fastq.gz | samtools sor
 picard MarkDuplicates I=sample.sorted.bam O=sample.dedup.bam M=metrics.txt REMOVE_DUPLICATES=true
 ```
 
-### **Peak Calling and Benchmarking**
+### **3. Peak Calling and Benchmarking**
 The pipeline runs multiple peak calling tools and compares their performance.
+#### **-MACS2**
+#### **-HMMRATAC**
+#### **-Genrich**
+#### **-SEACR**
 
 #### MACS2 (Standard ATAC-seq Peak Caller)
 ```bash
@@ -166,7 +164,7 @@ bash SEACR.sh sample.filtered.bam peaks/
 
 ---
 
-## **Benchmarking and Comparison of Peak Callers**
+## **4. Benchmarking and Comparison of Peak Callers**
 To evaluate and benchmark peak calling methods, the pipeline performs the following analyses:
 
 ### **Peak Overlap Analysis**
