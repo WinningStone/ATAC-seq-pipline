@@ -139,11 +139,11 @@ picard MarkDuplicates I=sample.sorted.bam O=sample.dedup.bam M=metrics.txt REMOV
 
 The post-alignment QC involves several steps:
 
-- [Remove mitochondrial reads](#remove-mitochondrial-reads)
-- [Remove duplicates & low-quality alignments]
-- [Calculate library complexity and QC](#calculate-library-complexity-and-QC)
-- [Remove ENCODE blacklist regions](#remove-encode-blacklist-regions)
-- [Shift read coordinates](#shift-read-coordinates)
+- Remove mitochondrial reads
+- Remove duplicates & low-quality alignments
+- Calculate library complexity and QC
+- Remove ENCODE blacklist regions
+- Shift read coordinates
 
 For an ATAC-seq experiment, the number of uniquely mapped reads ***after these steps*** is recommended to be 25 million for single-end or 50 million paired-end reads [(Buenrostro et al. 2015)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4374986/). Specific to ATAC-seq, an additional QC step is to check the fragment size distribution, which is expected to correspond to the length of nucleosomes:
 
