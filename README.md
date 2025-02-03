@@ -140,7 +140,7 @@ picard MarkDuplicates I=sample.sorted.bam O=sample.dedup.bam M=metrics.txt REMOV
 The post-alignment QC involves several steps:
 
 - [Remove mitochondrial reads](#remove-mitochondrial-reads)
-- [Remove duplicates & low-quality alignments](#remove-duplicates-&-low-quality-alignments) (including non-uniquely mapped reads)
+- [Remove duplicates & low-quality alignments]
 - [Calculate library complexity and QC](#calculate-library-complexity-and-QC)
 - [Remove ENCODE blacklist regions](#remove-encode-blacklist-regions)
 - [Shift read coordinates](#shift-read-coordinates)
