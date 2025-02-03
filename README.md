@@ -23,22 +23,27 @@ The pipeline consists of the following major steps:
    - Adapter trimming and quality filtering using **fastp**.
    - Reference genome indexing using **BWA**.
 
-2. **Read Alignment and Post-processing**
+2. **Read Alignment**
    - Aligning reads to the reference genome using **BWA**.
    - Sorting and indexing BAM files using **samtools**.
    - Removing low-quality reads and duplicate reads using **Picard MarkDuplicates**.
    - Removing mitochondrial and blacklisted reads using **bedtools**.
 
-3. **Peak Calling and Benchmarking**
+3. **Post-processing**
+
+   
+4. **Peak Calling and Benchmarking**
    - Running multiple peak calling tools: **MACS2, HMMRATAC, Genrich, and SEACR**.
    - Computing **Fraction of Reads in Peaks (FRiP) Score**.
    - Computing **Jaccard similarity between peak sets**.
    - **Comparing the performance of peak callers through overlap analysis**.
 
-4. **Signal Track Generation**
+
+5. **Signal Track Generation**
    - Generating **bigWig tracks** for visualization using **deepTools bamCoverage**.
 
-5. **Comparison of Peak Callers**
+
+6. **Comparison of Peak Callers**
    - Evaluating **peak overlaps** between different peak calling tools.
    - Calculating **Jaccard similarity scores** to assess the similarity of peak sets.
    - Counting the **total number of peaks called by each tool**.
