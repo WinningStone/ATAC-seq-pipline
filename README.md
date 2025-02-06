@@ -13,7 +13,7 @@ The pipeline allows for the **benchmarking of peak calling tools** by systematic
 - Generates **bigWig tracks** for visualization.
 - Configurable through a **config.yaml** file.
 
-<img src="https://github.com/WinningStone/ATAC-seq-pipline/blob/main/workflow.png" width="1200">
+<img src="https://github.com/WinningStone/ATAC-seq-pipline/blob/main/workflow.png" width="1500">
 
 ---
 
